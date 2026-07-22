@@ -1,0 +1,600 @@
+/* ==========================================================================
+   MAMÍFEROS DE COLOMBIA — Hoja de estilos
+   ==========================================================================
+   SISTEMA DE DISEÑO
+   Inspirado en las etiquetas de espécimen y cuadernos de campo de colecciones
+   de historia natural: papel cálido, tinta verde-tierra, y sellos de color
+   arcilla/ocre para los datos taxonómicos (igual que un rótulo de herbario).
+
+   Si quieres cambiar la paleta de colores de todo el sitio, solo modifica
+   las variables de la sección ":root" de aquí abajo — todo el CSS las usa,
+   así que un solo cambio se propaga a todo el sitio.
+   ========================================================================== */
+
+:root {
+  /* --- Color: "papel" cálido + "tinta" verde bosque + acentos arcilla/ocre --- */
+  --paper: #efe8d6;
+  --paper-raised: #f7f2e4;
+  --paper-dark: #e2d8ba;
+  --ink: #23281f;
+  --ink-soft: #52584a;
+  --forest: #35513a;
+  --forest-dark: #202f24;
+  --canopy: #7c9b6f;
+  --clay: #a15a28;
+  --clay-dark: #7c4520;
+  --gold: #b3812f;
+  --brick: #a63a2d;
+  --line: #c9be9c;
+  --line-soft: #ddd4b8;
+
+  /* --- Tipografía ---
+     "Fraunces" = serif con carácter para títulos y nombres científicos
+     "Public Sans" = texto de lectura
+     "JetBrains Mono" = datos/códigos (departamentos, IUCN, CITES) */
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-body: "Public Sans", "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
+
+  /* --- Espaciado / bordes --- */
+  --radius: 3px;
+  --shadow-card: 0 1px 0 rgba(35, 40, 31, 0.06), 0 8px 20px -12px rgba(35, 40, 31, 0.35);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(35,40,31,0.05) 1px, transparent 0);
+  background-size: 22px 22px;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+a { color: var(--forest); }
+
+/* Respeta la preferencia del usuario de reducir movimiento */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+/* Foco de teclado visible en todos los elementos interactivos */
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--clay);
+  outline-offset: 2px;
+}
+
+.contenedor {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ==========================================================================
+   CABECERA
+   ========================================================================== */
+
+.cabecera {
+  background: var(--forest-dark);
+  color: var(--paper-raised);
+  border-bottom: 6px solid var(--clay);
+  position: relative;
+  overflow: hidden;
+}
+
+.cabecera::after {
+  /* Textura sutil tipo "papel cuadriculado de cuaderno de campo" en la cabecera */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(239,232,214,0.04) 1px, transparent 1px);
+  background-size: 100% 28px;
+  pointer-events: none;
+}
+
+.cabecera__interior {
+  position: relative;
+  padding: 40px 24px 28px;
+}
+
+.cabecera__rotulo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--canopy);
+  border: 1px solid rgba(124,155,111,0.5);
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 18px;
+}
+
+.cabecera__titulo {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-style: italic;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+}
+
+.cabecera__titulo em {
+  color: var(--canopy);
+  font-style: italic;
+}
+
+.cabecera__subtitulo {
+  max-width: 640px;
+  color: #cfd6c6;
+  font-size: 1.05rem;
+  margin: 0 0 26px;
+}
+
+.cabecera__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border-top: 1px solid rgba(207,214,198,0.25);
+  margin-top: 8px;
+}
+
+.stat {
+  padding: 14px 26px 4px 0;
+  margin-right: 26px;
+  border-right: 1px solid rgba(207,214,198,0.2);
+}
+.stat:last-child { border-right: none; }
+
+.stat__valor {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 600;
+  color: var(--paper-raised);
+}
+
+.stat__etiqueta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--canopy);
+}
+
+/* ==========================================================================
+   BARRA DE FILTROS
+   ========================================================================== */
+
+.filtros {
+  background: var(--paper-raised);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.filtros__interior {
+  padding: 16px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.campo-busqueda {
+  flex: 1 1 260px;
+  position: relative;
+}
+
+.campo-busqueda input {
+  width: 100%;
+  padding: 10px 14px 10px 36px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.campo-busqueda input:focus { border-color: var(--forest); }
+
+.campo-busqueda__icono {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ink-soft);
+  pointer-events: none;
+}
+
+.filtros select {
+  padding: 10px 30px 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="6"><path d="M0 0l5 6 5-6z" fill="%2352584a"/></svg>') no-repeat right 12px center;
+  appearance: none;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.filtros select:focus { border-color: var(--forest); }
+
+.boton-toggle-mapa,
+.boton-limpiar {
+  padding: 10px 16px;
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.boton-toggle-mapa:hover, .boton-limpiar:hover { border-color: var(--forest); }
+
+.boton-toggle-mapa.activo {
+  background: var(--forest);
+  border-color: var(--forest);
+  color: var(--paper-raised);
+}
+
+.filtros__resultado {
+  flex-basis: 100%;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-soft);
+  padding-top: 4px;
+}
+
+.filtros__resultado strong { color: var(--clay-dark); }
+
+.chip-filtro-activo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--forest);
+  color: var(--paper-raised);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  padding: 4px 6px 4px 10px;
+  border-radius: 999px;
+  margin-left: 8px;
+}
+.chip-filtro-activo button {
+  background: none; border: none; color: inherit; cursor: pointer;
+  font-size: 14px; line-height: 1; padding: 0 4px;
+}
+
+/* ==========================================================================
+   MAPA DE DISTRIBUCIÓN GENERAL (en la portada)
+   ========================================================================== */
+
+.panel-mapa {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+  background: var(--paper-dark);
+  border-bottom: 1px solid var(--line);
+}
+.panel-mapa.abierto { max-height: 620px; }
+
+.panel-mapa__interior {
+  padding: 22px 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(220px, 0.7fr);
+  gap: 22px;
+}
+
+@media (max-width: 780px) {
+  .panel-mapa__interior { grid-template-columns: 1fr; }
+}
+
+.panel-mapa__mapa {
+  height: 480px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--paper-raised);
+}
+
+.panel-mapa__info h3 {
+  font-family: var(--font-display);
+  font-style: italic;
+  margin: 0 0 8px;
+  font-size: 1.3rem;
+}
+
+.panel-mapa__info p {
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  margin: 0 0 14px;
+}
+
+.leyenda-mapa {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+.leyenda-mapa__fila { display: flex; align-items: center; gap: 8px; }
+.leyenda-mapa__muestra { width: 16px; height: 16px; border-radius: 2px; flex: none; }
+
+.depto-seleccionado {
+  margin-top: 16px;
+  padding: 12px;
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+}
+.depto-seleccionado strong { display: block; font-family: var(--font-display); font-style: italic; font-size: 1.05rem; margin-bottom: 4px; }
+
+/* ==========================================================================
+   CUADRÍCULA DE ESPECIES
+   ========================================================================== */
+
+.principal { padding: 28px 24px 60px; }
+
+.rejilla-especies {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.tarjeta-especie {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  text-align: left;
+  padding: 0;
+  font-family: inherit;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.tarjeta-especie:hover { transform: translateY(-2px); border-color: var(--forest); }
+
+.tarjeta-especie__foto {
+  height: 150px;
+  background: var(--paper-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+.tarjeta-especie__foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.tarjeta-especie__foto-vacia {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.tarjeta-especie__cuerpo { padding: 12px 14px 14px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
+
+.tarjeta-especie__orden {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--clay-dark);
+}
+
+.tarjeta-especie__cientifico {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.08rem;
+  color: var(--ink);
+  line-height: 1.25;
+}
+
+.tarjeta-especie__comun {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.tarjeta-especie__insignias { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
+
+.insignia {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  padding: 2px 7px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+.insignia--endemica { background: rgba(124,155,111,0.18); color: var(--forest); border-color: rgba(124,155,111,0.4); }
+.insignia--vu { background: rgba(179,129,47,0.16); color: var(--gold); border-color: rgba(179,129,47,0.4); }
+.insignia--en { background: rgba(161,90,40,0.16); color: var(--clay-dark); border-color: rgba(161,90,40,0.4); }
+.insignia--cr { background: rgba(166,58,45,0.16); color: var(--brick); border-color: rgba(166,58,45,0.4); }
+.insignia--cites { background: rgba(35,40,31,0.06); color: var(--ink-soft); border-color: var(--line); }
+
+.boton-cargar-mas {
+  display: block;
+  margin: 32px auto 0;
+  padding: 12px 28px;
+  background: var(--forest);
+  color: var(--paper-raised);
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.boton-cargar-mas:hover { background: var(--forest-dark); }
+.boton-cargar-mas:disabled { opacity: 0.5; cursor: default; }
+
+.sin-resultados {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--ink-soft);
+}
+.sin-resultados h3 { font-family: var(--font-display); font-style: italic; font-size: 1.4rem; color: var(--ink); }
+
+/* ==========================================================================
+   MODAL — FICHA DE ESPECIE
+   ========================================================================== */
+
+.modal-fondo {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 24, 17, 0.55);
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 32px 16px;
+  overflow-y: auto;
+  z-index: 100;
+}
+.modal-fondo.visible { display: flex; }
+
+.ficha {
+  background: var(--paper-raised);
+  width: min(880px, 100%);
+  border-radius: var(--radius);
+  box-shadow: 0 24px 60px -20px rgba(0,0,0,0.5);
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.ficha__cabecera {
+  background: var(--forest-dark);
+  color: var(--paper-raised);
+  padding: 22px 26px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.ficha__ruta-taxonomica {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--canopy);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.ficha__nombre-cientifico {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.7rem;
+  margin: 0;
+}
+
+.ficha__nombre-comun { color: #cfd6c6; font-size: 0.95rem; margin-top: 4px; }
+
+.ficha__cerrar {
+  background: none;
+  border: 1px solid rgba(207,214,198,0.4);
+  color: var(--paper-raised);
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  flex: none;
+}
+.ficha__cerrar:hover { background: rgba(207,214,198,0.15); }
+
+.ficha__foto {
+  width: 100%;
+  height: 260px;
+  background: var(--paper-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.ficha__foto img { width: 100%; height: 100%; object-fit: cover; }
+.ficha__foto-vacia { font-family: var(--font-mono); font-size: 12px; color: var(--ink-soft); text-align: center; padding: 20px; }
+
+.ficha__pestanas {
+  display: flex;
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+  overflow-x: auto;
+}
+
+.ficha__pestana {
+  padding: 13px 20px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+.ficha__pestana.activa { color: var(--forest-dark); border-bottom-color: var(--clay); font-weight: 600; }
+.ficha__pestana:hover:not(.activa) { color: var(--ink); }
+
+.ficha__panel { display: none; padding: 22px 26px 30px; }
+.ficha__panel.activo { display: block; }
+
+.tabla-datos { width: 100%; border-collapse: collapse; }
+.tabla-datos tr { border-bottom: 1px solid var(--line-soft); }
+.tabla-datos tr:last-child { border-bottom: none; }
+.tabla-datos th, .tabla-datos td { text-align: left; padding: 9px 6px; font-size: 0.92rem; vertical-align: top; }
+.tabla-datos th { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-soft); width: 190px; font-weight: 500; }
+
+.ficha__mapa { height: 340px; border: 1px solid var(--line); border-radius: var(--radius); margin-top: 4px; }
+
+.texto-largo { font-size: 0.96rem; line-height: 1.65; color: var(--ink); white-space: pre-line; }
+.texto-largo.vacio { color: var(--ink-soft); font-style: italic; }
+
+.aviso-edicion {
+  margin-top: 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-soft);
+  border-top: 1px dashed var(--line);
+  padding-top: 10px;
+}
+
+/* ==========================================================================
+   PIE DE PÁGINA
+   ========================================================================== */
+
+.pie {
+  background: var(--forest-dark);
+  color: #cfd6c6;
+  padding: 26px 24px;
+  font-size: 0.85rem;
+  text-align: center;
+}
+.pie a { color: var(--canopy); }
+
+/* Leaflet: ajustar popup al sistema de diseño */
+.leaflet-popup-content-wrapper { border-radius: var(--radius); font-family: var(--font-body); }
+.leaflet-popup-content { font-size: 0.85rem; margin: 10px 12px; }

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mamíferos de Colombia — Catálogo interactivo</title>
+<meta name="description" content="Catálogo interactivo de los mamíferos de Colombia: filtros de búsqueda, mapa de distribución por departamento y fichas de especie con descripción y claves de identificación.">
+
+<!-- Tipografías (Google Fonts) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500;1,600&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- Leaflet (mapa interactivo) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
+
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ======================= CABECERA ======================= -->
+<header class="cabecera">
+  <div class="contenedor cabecera__interior">
+    <span class="cabecera__rotulo">Catálogo de biodiversidad · Colombia</span>
+    <h1 class="cabecera__titulo">Mamíferos de <em>Colombia</em></h1>
+    <p class="cabecera__subtitulo">
+      Explora las especies de mamíferos registradas en el territorio colombiano:
+      filtra por orden, familia, estado de amenaza o departamento, y consulta la
+      ficha de cada especie con su distribución, descripción y claves de identificación.
+    </p>
+    <div class="cabecera__stats">
+      <div class="stat"><span class="stat__valor" id="stat-total">—</span><span class="stat__etiqueta">Especies</span></div>
+      <div class="stat"><span class="stat__valor" id="stat-ordenes">—</span><span class="stat__etiqueta">Órdenes</span></div>
+      <div class="stat"><span class="stat__valor" id="stat-endemicas">—</span><span class="stat__etiqueta">Endémicas</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ======================= BARRA DE FILTROS ======================= -->
+<div class="filtros">
+  <div class="contenedor filtros__interior">
+    <div class="campo-busqueda">
+      <span class="campo-busqueda__icono">⌕</span>
+      <input type="search" id="campo-busqueda" placeholder="Buscar por nombre científico, común, familia o género…" aria-label="Buscar especie">
+    </div>
+
+    <select id="filtro-orden" aria-label="Filtrar por orden">
+      <option value="">Todos los órdenes</option>
+    </select>
+
+    <select id="filtro-familia" aria-label="Filtrar por familia">
+      <option value="">Todas las familias</option>
+    </select>
+
+    <select id="filtro-genero" aria-label="Filtrar por género">
+      <option value="">Todos los géneros</option>
+    </select>
+
+    <select id="filtro-amenaza" aria-label="Filtrar por estado de amenaza">
+      <option value="">Cualquier estado UICN</option>
+      <option value="VU">Vulnerable (VU)</option>
+      <option value="EN">En peligro (EN)</option>
+      <option value="CR">En peligro crítico (CR)</option>
+    </select>
+
+    <select id="filtro-endemica" aria-label="Filtrar por especies endémicas">
+      <option value="">Endémicas y no endémicas</option>
+      <option value="si">Solo endémicas</option>
+    </select>
+
+    <select id="filtro-cites" aria-label="Filtrar por apéndice CITES">
+      <option value="">Cualquier apéndice CITES</option>
+    </select>
+
+    <button type="button" id="boton-toggle-mapa" class="boton-toggle-mapa">Ver mapa de distribución</button>
+    <button type="button" id="boton-limpiar" class="boton-limpiar">Limpiar filtros</button>
+
+    <div class="filtros__resultado" id="resumen-resultados"></div>
+    <span id="chip-departamento"></span>
+  </div>
+
+  <!-- Panel plegable con el mapa general de distribución -->
+  <div class="panel-mapa" id="panel-mapa">
+    <div class="contenedor panel-mapa__interior">
+      <div class="panel-mapa__mapa" id="mapa-general"></div>
+      <div class="panel-mapa__info">
+        <h3>Riqueza de especies por departamento</h3>
+        <p>El color de cada departamento indica cuántas de las especies actualmente filtradas están registradas allí. Haz clic en un departamento para filtrar el catálogo solo a esa zona; haz clic de nuevo para quitar el filtro.</p>
+        <div class="leyenda-mapa">
+          <div class="leyenda-mapa__fila"><span class="leyenda-mapa__muestra" style="background:#e2d8ba"></span> Sin registros</div>
+          <div class="leyenda-mapa__fila"><span class="leyenda-mapa__muestra" style="background:#c3d3b8"></span> 1–29 especies</div>
+          <div class="leyenda-mapa__fila"><span class="leyenda-mapa__muestra" style="background:#9bb98c"></span> 30–79 especies</div>
+          <div class="leyenda-mapa__fila"><span class="leyenda-mapa__muestra" style="background:#729b62"></span> 80–149 especies</div>
+          <div class="leyenda-mapa__fila"><span class="leyenda-mapa__muestra" style="background:#3f6244"></span> 150+ especies</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= CUADRÍCULA DE ESPECIES ======================= -->
+<main class="principal contenedor">
+  <div class="rejilla-especies" id="rejilla-especies">
+    <!-- Las tarjetas de especie se generan dinámicamente en js/app.js -->
+  </div>
+  <button type="button" id="boton-cargar-mas" class="boton-cargar-mas" style="display:none;">Cargar más</button>
+</main>
+
+<footer class="pie">
+  Catálogo construido a partir de un listado de mamíferos de Colombia.
+  Código abierto — ver <a href="README.md">README.md</a> para instrucciones de instalación y edición.
+</footer>
+
+<!-- ======================= MODAL: FICHA DE ESPECIE ======================= -->
+<div class="modal-fondo" id="modal-fondo" role="dialog" aria-modal="true" aria-label="Ficha de especie">
+  <div class="ficha">
+    <div class="ficha__cabecera">
+      <div>
+        <div class="ficha__ruta-taxonomica" id="ficha-ruta-taxonomica"></div>
+        <h2 class="ficha__nombre-cientifico" id="ficha-nombre-cientifico"></h2>
+        <div class="ficha__nombre-comun" id="ficha-nombre-comun"></div>
+      </div>
+      <button type="button" class="ficha__cerrar" id="ficha-cerrar" aria-label="Cerrar ficha">&times;</button>
+    </div>
+
+    <div class="ficha__foto" id="ficha-foto" style="position:relative;"></div>
+
+    <div class="ficha__pestanas" role="tablist">
+      <button type="button" class="ficha__pestana activa" data-pestana="general" role="tab">Información general</button>
+      <button type="button" class="ficha__pestana" data-pestana="distribucion" role="tab">Distribución</button>
+      <button type="button" class="ficha__pestana" data-pestana="descripcion" role="tab">Descripción</button>
+      <button type="button" class="ficha__pestana" data-pestana="claves" role="tab">Claves de identificación</button>
+    </div>
+
+    <div class="ficha__panel activo" data-panel="general">
+      <table class="tabla-datos" id="ficha-tabla-datos"></table>
+    </div>
+
+    <div class="ficha__panel" data-panel="distribucion">
+      <div class="ficha__mapa" id="ficha-mapa"></div>
+      <p class="aviso-edicion">Distribución por departamento según los registros compilados en data/especies.json.</p>
+    </div>
+
+    <div class="ficha__panel" data-panel="descripcion">
+      <p class="texto-largo" id="ficha-descripcion"></p>
+    </div>
+
+    <div class="ficha__panel" data-panel="claves">
+      <p class="texto-largo" id="ficha-claves"></p>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= SCRIPTS ======================= -->
+<!-- Orden importante: primero los datos/config, después la lógica -->
+<script src="js/fotos-config.js"></script>
+<script src="js/mapa.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
