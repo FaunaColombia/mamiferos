@@ -53,5 +53,5 @@ const FOTOS = {
    Se muestra como un texto pequeño debajo de la imagen en la ficha. */
 const CREDITOS_FOTOS = {
   "puma-concolor": "Foto: (c) pfaucher – algunos derechos reservados (CC BY-NC)",
-   "dasypus-fenestratus": "Foto: (c) johnmeikle – algunos derechos reservados (CC BY-NC)",
+   "dasypus-fenestratus": "Foto: (c) johnmeikle – algunos derechos reservados <a href="https://creativecommons.org/licenses/by-nc/4.0/"> (CC BY-NC)",
 };
