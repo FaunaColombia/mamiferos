@@ -12306,11 +12306,24 @@
     "nombreCientifico": "Dasypus fenestratus",
     "nombreComun": "Armadillo, Jusa, Caseteja, Cachicamo, Gurre, Jerre-jerre, Chula, Jusa, Tronquero, Rastrojero, Dú, Luloa, Acquá, Akuá, Matiwaja, Ye'ehuani, Sho, shina,",
     "departamentos": [
-      "Orinoquia",
-      "Amazonia"
-    ],
-    "departamentosGeo": [
-      "AMAZONAS"
+  "Antioquia",
+  "Caldas",
+  "Cauca",
+  "Chocó",
+  "Nariño",
+  "Quindío",
+  "Risaralda",
+  "Valle del Cauca"
+],
+"departamentosGeo": [
+  "ANTIOQUIA",
+  "CALDAS",
+  "CAUCA",
+  "CHOCO",
+  "NARIÑO",
+  "QUINDIO",
+  "RISARALDA",
+  "VALLE DEL CAUCA"
     ],
     "ocurrencia": null,
     "endemica": false,
