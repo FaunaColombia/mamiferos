@@ -63,7 +63,7 @@ const CREDITOS_FOTOS = {
    // licencia: "CC BY-NC",
    // urlLicencia: "https://creativecommons.org/licenses/by-nc/4.0/",
    // urlFuente: "https://www.inaturalist.org/observations/123456789"
-  },
+  //},
 
  // "dasypus-fenestratus": {
    // autor: "johnmeikle",
