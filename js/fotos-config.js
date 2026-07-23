@@ -52,6 +52,27 @@ const FOTOS = {
 /* También puedes poner aquí el crédito/autor de cada foto (opcional).
    Se muestra como un texto pequeño debajo de la imagen en la ficha. */
 const CREDITOS_FOTOS = {
-  "puma-concolor": "Foto: (c) pfaucher – algunos derechos reservados (CC BY-NC)",
-   "dasypus-fenestratus": "Foto: (c) johnmeikle – algunos derechos reservados (CC BY-NC)",
+  //"puma-concolor": "Foto: (c) pfaucher – algunos derechos reservados (CC BY-NC)",
+  // "dasypus-fenestratus": "Foto: (c) johnmeikle – algunos derechos reservados (CC BY-NC)",
 };
+
+///* Crédito, licencia y fuente de cada fotografía */
+//const CREDITOS_FOTOS = {
+ // "puma-concolor": {
+   // autor: "pfaucher",
+   // licencia: "CC BY-NC",
+   // urlLicencia: "https://creativecommons.org/licenses/by-nc/4.0/",
+   // urlFuente: "https://www.inaturalist.org/observations/123456789"
+  },
+
+  "dasypus-fenestratus": {
+    autor: "johnmeikle",
+    licencia: "CC BY-NC",
+    urlLicencia: "https://creativecommons.org/licenses/by-nc/4.0/",
+    urlFuente: "https://www.inaturalist.org/taxa/1647420-Dasypus-fenestratus"
+  }
+};
+
+
+
+
