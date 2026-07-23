@@ -45,7 +45,7 @@
    ========================================================================== */
 
 const FOTOS = {
-  // "passalites-murelia": "https://upload.wikimedia.org/wikipedia/commons/...",
+  "dasypus-fenestratus": "https://inaturalist-open-data.s3.amazonaws.com/photos/69900176/medium.jpg",
   "puma-concolor": "https://inaturalist-open-data.s3.amazonaws.com/photos/9834553/original.jpg",
 };
 
@@ -53,4 +53,5 @@ const FOTOS = {
    Se muestra como un texto pequeño debajo de la imagen en la ficha. */
 const CREDITOS_FOTOS = {
   "puma-concolor": "Foto: (c) pfaucher – algunos derechos reservados (CC BY-NC)",
+   "dasypus-fenestratus": "Foto: (c) johnmeikle – algunos derechos reservados (CC BY-NC)",
 };
