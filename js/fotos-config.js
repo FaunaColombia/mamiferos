@@ -45,15 +45,13 @@
    ========================================================================== */
 
 const FOTOS = {
- "dasypus-fenestratus": "https://inaturalist-open-data.s3.amazonaws.com/photos/69900176/medium.jpg",
- "puma-concolor": "https://inaturalist-open-data.s3.amazonaws.com/photos/9834553/original.jpg",
+  "dasypus-fenestratus": "https://inaturalist-open-data.s3.amazonaws.com/photos/69900176/medium.jpg",
+  "puma-concolor": "https://inaturalist-open-data.s3.amazonaws.com/photos/9834553/original.jpg",
 };
-
 const CREDITOS_FOTOS = {
- "puma-concolor": 'Foto: (c) pfaucher – <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC</a> - <a href="https://www.inaturalist.org/taxa/1647420-Dasypus-fenestratus" target="_blank" rel="noopener noreferrer">Fuente</a>',
-"dasypus-fenestratus": 'Foto: (c) johnmeikle – algunos derechos reservados (<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC</a>)',
+  "puma-concolor": 'Foto: (c) pfaucher – <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer" style="color: white;">CC BY-NC</a> - <a href="https://www.inaturalist.org/taxa/1647420-Dasypus-fenestratus" target="_blank" rel="noopener noreferrer" style="color: white;">Fuente</a>',
+  "dasypus-fenestratus": 'Foto: (c) johnmeikle – algunos derechos reservados (<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer" style="color: white;">CC BY-NC</a>)',
 };
-
 
 
 
