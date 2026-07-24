@@ -51,10 +51,16 @@ const FOTOS = {
 
 /* También puedes poner aquí el crédito/autor de cada foto (opcional).
    Se muestra como un texto pequeño debajo de la imagen en la ficha. */
+///const CREDITOS_FOTOS = {
+  //"puma-concolor": "Foto: (c) pfaucher – algunos derechos reservados (CC BY-NC)",
+  //"dasypus-fenestratus": "Foto: (c) johnmeikle – algunos derechos reservados (CC BY-NC)",
+//};
+
 const CREDITOS_FOTOS = {
-  "puma-concolor": "Foto: (c) pfaucher – algunos derechos reservados (CC BY-NC)",
-  "dasypus-fenestratus": "Foto: (c) johnmeikle – algunos derechos reservados (CC BY-NC)",
+  "puma-concolor": 'Foto: (c) pfaucher – algunos derechos reservados (<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC</a>)',
+  "dasypus-fenestratus": 'Foto: (c) johnmeikle – algunos derechos reservados (<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC</a>)',
 };
+
 
 ///* Crédito, licencia y fuente de cada fotografía */
 //const CREDITOS_FOTOS = {
