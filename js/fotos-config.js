@@ -79,7 +79,6 @@
  // }
 //};
 
-
 ///const FOTOS_ESPECIES = {
  // "puma-concolor": [
    // {
@@ -98,6 +97,7 @@
    // }
   //]
 //};
+
 const GALERIA_FOTOS = {
   "puma-concolor": [
     {
