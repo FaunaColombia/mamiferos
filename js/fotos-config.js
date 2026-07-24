@@ -69,6 +69,7 @@ const CREDITOS_FOTOS = {
   ],
   "dasypus-fenestratus": [
     'Foto: (c) johnmeikle – algunos derechos reservados (<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer" style="color: white;">CC BY-NC</a>)',
+    'Foto: (c) Danielsanchez – algunos derechos reservados (<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer" style="color: white;">CC BY-NC)</a>)', 
   ],
 };
 
