@@ -44,71 +44,18 @@
    afectan el sitio hasta que quites el "//" y pongas tus propios datos.
    ========================================================================== */
 
-//const FOTOS = {
- // "dasypus-fenestratus": "https://inaturalist-open-data.s3.amazonaws.com/photos/69900176/medium.jpg",
- // "puma-concolor": "https://inaturalist-open-data.s3.amazonaws.com/photos/9834553/original.jpg",
-//};
-
-/* También puedes poner aquí el crédito/autor de cada foto (opcional).
-   Se muestra como un texto pequeño debajo de la imagen en la ficha. */
-///const CREDITOS_FOTOS = {
-  //"puma-concolor": "Foto: (c) pfaucher – algunos derechos reservados (CC BY-NC)",
-  //"dasypus-fenestratus": "Foto: (c) johnmeikle – algunos derechos reservados (CC BY-NC)",
-//};
-
-//const CREDITOS_FOTOS = {
- // "puma-concolor": 'Foto: (c) pfaucher – <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC</a> - <a href="https://www.inaturalist.org/taxa/1647420-Dasypus-fenestratus" target="_blank" rel="noopener noreferrer">Fuente</a>',
-//  "dasypus-fenestratus": 'Foto: (c) johnmeikle – algunos derechos reservados (<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC</a>)',
-//};
-
-
-///* Crédito, licencia y fuente de cada fotografía */
-//const CREDITOS_FOTOS = {
- // "puma-concolor": {
-   // autor: "pfaucher",
-   // licencia: "CC BY-NC",
-   // urlLicencia: "https://creativecommons.org/licenses/by-nc/4.0/",
-   // urlFuente: "https://www.inaturalist.org/observations/123456789"
-  //},
-
- // "dasypus-fenestratus": {
-   // autor: "johnmeikle",
-   // licencia: "CC BY-NC",
-   // urlLicencia: "https://creativecommons.org/licenses/by-nc/4.0/",
-   // urlFuente: "https://www.inaturalist.org/taxa/1647420-Dasypus-fenestratus"
- // }
-//};
-
-///const FOTOS_ESPECIES = {
- // "puma-concolor": [
-   // {
-    //  url: "ruta/o/enlace/foto1.jpg",
-   //   credito: 'Foto: (c) <a href="https://www.inaturalist.org/people/pfaucher" target="_blank" rel="noopener noreferrer">pfaucher</a> – algunos derechos reservados (<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC</a>)'
-  //  },
-  //  {
-   //   url: "ruta/o/enlace/foto2.jpg",
-    //  credito: 'Foto: (c) <a href="https://www.inaturalist.org/people/otro-usuario" target="_blank" rel="noopener noreferrer">otro-usuario</a> – algunos derechos reservados (<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC</a>)'
-   // }
- // ],
- // "dasypus-fenestratus": [
-   // {
-   //   url: "ruta/o/enlace/foto1.jpg",
-    //  credito: 'Foto: (c) <a href="https://www.inaturalist.org/people/johnmeikle" target="_blank" rel="noopener noreferrer">johnmeikle</a> – algunos derechos reservados (<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC</a>)'
-   // }
-  //]
-//};
-
-const GALERIA_FOTOS = {
-  "puma-concolor": [
-    {
-      url: "https://inaturalist-open-data.s3.amazonaws.com/photos/9834553/original.jpg",
-      credito: 'Foto: (c) pfaucher – <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC</a> - <a href="https://www.inaturalist.org/taxa/41967-Puma-concolor" target="_blank" rel="noopener noreferrer">Fuente</a>'
-    }
-  ],
-  "dasypus-fenestratus": [
-    {
-      url: "https://inaturalist-open-data.s3.amazonaws.com/photos/69900176/medium.jpg",
-      credito: 'Foto: (c) johnmeikle – <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC</a> - <a href="https://www.inaturalist.org/taxa/1647420-Dasypus-fenestratus" target="_blank" rel="noopener noreferrer">Fuente</a>'
-    }
-  ]
+const FOTOS = {
+ "dasypus-fenestratus": "https://inaturalist-open-data.s3.amazonaws.com/photos/69900176/medium.jpg",
+ "puma-concolor": "https://inaturalist-open-data.s3.amazonaws.com/photos/9834553/original.jpg",
 };
+
+const CREDITOS_FOTOS = {
+ "puma-concolor": 'Foto: (c) pfaucher – <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC</a> - <a href="https://www.inaturalist.org/taxa/1647420-Dasypus-fenestratus" target="_blank" rel="noopener noreferrer">Fuente</a>',
+"dasypus-fenestratus": 'Foto: (c) johnmeikle – algunos derechos reservados (<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC</a>)',
+};
+
+
+
+
+
+
