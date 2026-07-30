@@ -62,6 +62,11 @@ const FOTOS = {
   "puma-concolor": [
     "https://inaturalist-open-data.s3.amazonaws.com/photos/9834553/original.jpg",
   ],
+"leopardus-garleppi": [
+    "https://mammalogynotes.org/ojs/public/journals/1/article_452_cover_es_ES.jpg",
+  ],
+   
+   
 };
 const CREDITOS_FOTOS = {
   "puma-concolor": [
