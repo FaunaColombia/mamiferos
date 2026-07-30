@@ -77,7 +77,7 @@ const CREDITOS_FOTOS = {
     'Foto: (c) Danielsanchez – algunos derechos reservados (<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer" style="color: white;">CC BY-NC)</a>)', 
   ],
 "leopardus-garleppi": [
-    'Foto: (Christian Cabrera-Ojeda & José Meléndez, 2024) – <a href="https://mammalogynotes.org/ojs/index.php/mn/article/view/452/597" target="_blank" rel="noopener noreferrer" style="color: white;">CC BY-NC</a> - <a href="https://mammalogynotes.org/ojs/index.php/mn/article/view/452" target="_blank" rel="noopener noreferrer" style="color: white;">Fuente</a>',
+    'Foto: (Christian Cabrera-Ojeda & José Meléndez, 2024) – <a href="https://mammalogynotes.org/ojs/index.php/mn/article/view/452/597" target="_blank" rel="noopener noreferrer" style="color: white;">Fuente</a>',
   ],   
 };
 
