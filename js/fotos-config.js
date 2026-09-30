@@ -68,6 +68,9 @@ const FOTOS = {
    "leopardus-pardinoides": [
     "https://inaturalist-open-data.s3.amazonaws.com/photos/255441076/medium.jpg",
   ],   
+   "panthera-onca": [
+    "https://inaturalist-open-data.s3.amazonaws.com/photos/200127875/medium.jpg",
+  ],   
 };
 const CREDITOS_FOTOS = {
   "puma-concolor": [
@@ -83,6 +86,8 @@ const CREDITOS_FOTOS = {
 "leopardus-pardinoides": [
     'Foto: (c) George Armistead/Hillstar Nature – algunos derechos reservados – <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer" style="color: white;">CC BY-NC</a> - <a href="https://www.inaturalist.org/es/taxa/1595820-Leopardus-pardinoides" target="_blank" rel="noopener noreferrer" style="color: white;">Fuente</a>',
   ],   
-};
+   "panthera-onca": [
+    'Foto: (c) Charles J. Sharp – algunos derechos reservados – <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer" style="color: white;">CC BY-NC</a> - <a href="https://colombia.inaturalist.org/taxa/41970-Panthera-onca" target="_blank" rel="noopener noreferrer" style="color: white;">Fuente</a>',
+  ], };
 
 
